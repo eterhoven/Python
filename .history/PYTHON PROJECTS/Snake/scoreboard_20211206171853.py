@@ -12,16 +12,14 @@ class Scoreboard(Turtle):
         self.hideturtle() 
         
     def keep_score(self):
-        self.score += 1
         self.clear()
         self.write(f"Score: {self.score} High score: {self.high_score}", False,'center', ('Arial', 24, 'normal'))
     
     def reset(self):
         if self.score > self.high_score:
             self.high_score = self.score
-            self.clear()
-            self.score = 0
-            self.write(f"Score: {self.score} High score: {self.high_score}", False,'center', ('Arial', 24, 'normal'))
+        self.score = 0
+        self.keep_score
 
     #def game_over(self):
     #    self.goto(0, 0)
