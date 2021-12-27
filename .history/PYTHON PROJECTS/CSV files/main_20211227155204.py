@@ -15,4 +15,4 @@ weather = pandas.read_csv("./weather_data.csv")
 print(weather[weather["temp"] == weather["temp"].max()])
 
 monday = weather[weather["day"] == "Monday"]
-print((monday.temp) * (9/5) + 32)
+print((monday.temp) + 32)
