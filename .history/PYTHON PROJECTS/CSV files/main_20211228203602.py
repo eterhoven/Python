@@ -22,6 +22,10 @@ gray_squirrels_count = len(squirrels[squirrels["Primary Fur Color"] == "Gray"])
 red_squirrels_count = len(squirrels[squirrels["Primary Fur Color"] == "Cinnamon"])
 black_squirrels_count = len(squirrels[squirrels["Primary Fur Color"] == "Black"])
 
+print(gray_squirrels_count)
+print(red_squirrels_count)
+print(black_squirrels_count)
+
 squirrel_dict = {
     "Fur Color": ["Gray", "Cinnamon", "Black"],
     "Count": [gray_squirrels_count, red_squirrels_count, black_squirrels_count]
