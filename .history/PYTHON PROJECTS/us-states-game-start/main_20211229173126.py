@@ -33,11 +33,9 @@ while len(correct_answers) < 50:
         state_data = states[states["state"] == answer_state]
         t.goto(int(state_data.x), int(state_data.y))
         t.write(answer_state)
-    elif answer_state == "Exit":
-        missing_states = []
-        for state in all_states:
-            if state not in correct_answers:
-                missing_states.append(state)
-        new_data = pandas.DataFrame(missing_states)
-        new_data.to_csv("states_to_learn.csv")
+    elif answer_state == "exit":
         break
+    
+    
+    
+screen.exitonclick()
