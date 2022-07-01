@@ -6,6 +6,7 @@ import turtle
 window = Tk()
 window.title("My First GUI program")
 window.minsize(width=500, height=300)
+window.config(padx=20, pady=20)
 
 #Label
 
