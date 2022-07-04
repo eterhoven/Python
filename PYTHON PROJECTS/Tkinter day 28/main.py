@@ -44,10 +44,10 @@ def start_timer():
         countdown_timer(long_break_sec)
         timer_label.config(text=("Take a longer break"), fg=RED)
     elif REPS % 2 == 0:
-        countdown_timer(SHORT_BREAK_MIN)
+        countdown_timer(short_break_sec)
         timer_label.config(text=("Take a short break"), fg=PINK)
     else:
-        countdown_timer(WORK_MIN)
+        countdown_timer(work_sec)
         timer_label.config(text=("Head down"))
         
 
