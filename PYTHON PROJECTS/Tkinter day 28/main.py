@@ -3,6 +3,7 @@ from tabnanny import check
 from time import time
 from tkinter import *
 import math
+from playsound import playsound as play
 
 # ---------------------------- CONSTANTS ------------------------------- #
 PINK = "#e2979c"
@@ -41,13 +42,16 @@ def start_timer():
     REPS += 1
         
     if REPS % 8 == 0:
-        countdown_timer(long_break_sec)
+        countdown_timer(LONG_BREAK_MIN)
+        play('long_break.wav')
         timer_label.config(text=("Take a longer break"), fg=RED)
     elif REPS % 2 == 0:
-        countdown_timer(short_break_sec)
+        countdown_timer(SHORT_BREAK_MIN)
+        play('short_break.wav')
         timer_label.config(text=("Take a short break"), fg=PINK)
     else:
-        countdown_timer(work_sec)
+        countdown_timer(WORK_MIN)
+        play('work_start.wav')
         timer_label.config(text=("Head down"))
         
 
