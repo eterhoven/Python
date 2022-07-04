@@ -42,17 +42,17 @@ def start_timer():
     REPS += 1
         
     if REPS % 8 == 0:
-        countdown_timer(LONG_BREAK_MIN)
+        countdown_timer(long_break_sec)
         play('long_break.wav')
-        timer_label.config(text=("Take a longer break"), fg=RED)
+        timer_label.config(text=("Long break"), fg=RED)
     elif REPS % 2 == 0:
-        countdown_timer(SHORT_BREAK_MIN)
+        countdown_timer(short_break_sec)
         play('short_break.wav')
-        timer_label.config(text=("Take a short break"), fg=PINK)
+        timer_label.config(text=("Break time"), fg=PINK)
     else:
-        countdown_timer(WORK_MIN)
+        countdown_timer(work_sec)
         play('work_start.wav')
-        timer_label.config(text=("Head down"))
+        timer_label.config(text=("Work time"))
         
 
 # ---------------------------- COUNTDOWN MECHANISM ------------------------------- # 
@@ -72,8 +72,14 @@ def countdown_timer(count):
         timer = window.after(1000, countdown_timer, count - 1)
     else:
         start_timer()
-        if REPS % 2 == 0:
+        if REPS == 2:
             check_buttons.config(text="✔")
+        elif REPS == 4:
+            check_buttons.config(text="✔✔")
+        elif REPS == 6:
+            check_buttons.config(text="✔✔✔")
+        elif REPS == 8:
+            check_buttons.config(text="Time to rest")
 
 # ---------------------------- UI SETUP ------------------------------- #
 
@@ -105,3 +111,5 @@ check_buttons.config(fg=GREEN)
 check_buttons.grid(column=1, row=3)
 
 window.mainloop()
+
+#pip3 install PyObjC 
