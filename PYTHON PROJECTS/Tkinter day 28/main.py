@@ -12,6 +12,7 @@ FONT_NAME = "Courier"
 WORK_MIN = 25
 SHORT_BREAK_MIN = 5
 LONG_BREAK_MIN = 20
+REPS = 0
 
 #colorhunt is good website for looking at color options
 
@@ -22,7 +23,24 @@ LONG_BREAK_MIN = 20
 # ---------------------------- TIMER MECHANISM ------------------------------- # 
 
 def start_timer():
-    countdown_timer(5 * 60)
+    global REPS
+
+    work_sec = WORK_MIN * 60
+    short_break_sec = SHORT_BREAK_MIN * 60
+    long_break_sec = LONG_BREAK_MIN * 60
+
+    REPS += 1
+        
+    if REPS % 8 == 0:
+        countdown_timer(LONG_BREAK_MIN)
+        timer_label.config(text=("Take a longer break"), fg=RED)
+    elif REPS % 2 == 0:
+        countdown_timer(SHORT_BREAK_MIN)
+        timer_label.config(text=("Take a short break"), fg=PINK)
+    else:
+        countdown_timer(WORK_MIN)
+        timer_label.config(text=("Head down"))
+        
 
 # ---------------------------- COUNTDOWN MECHANISM ------------------------------- # 
 
@@ -30,10 +48,16 @@ def countdown_timer(count):
 
     count_min = math.floor(count / 60)
     count_sec = count % 60
+    if count_sec == 0:
+        count_sec = "00"
+    elif count_sec in range(1,10):
+        count_sec = f"0{count_sec}"
 
     canvas.itemconfig(timer_text, text=f"{count_min}:{count_sec}")
     if count > 0:
         window.after(1000, countdown_timer, count - 1)
+    else:
+        start_timer()
 
 # ---------------------------- UI SETUP ------------------------------- #
 
