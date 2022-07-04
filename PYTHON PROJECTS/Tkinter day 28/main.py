@@ -104,5 +104,4 @@ check_buttons.config(bg=YELLOW)
 check_buttons.config(fg=GREEN)
 check_buttons.grid(column=1, row=3)
 
-
 window.mainloop()
